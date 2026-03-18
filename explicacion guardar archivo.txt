@@ -1,0 +1,22 @@
+const filas = [
+    ['N°', 'Nombre', 'Numero', 'Fecha', 'Valor'],
+    ...alumnos.map((a, i) => [i + 1, a.nombre, a.numero, a.fecha, a.valor])
+];
+
+Crea un array de arrays. La primera fila es el encabezado. Las siguientes las genera con .map() que recorre cada alumno a y su índice i, y devuelve un array con los datos. El ... (spread) "desparrama" esos arrays dentro de filas en vez de anidarlos.
+
+------------------------------------------------------------------------------
+const csv = filas.map(f => f.join(',')).join('\n');
+
+Primero .join(',') une cada fila con comas: ['N°', 'Nombre'] → "N°,Nombre". Luego el .join('\n') exterior une todas las filas con saltos de línea, formando el texto final del archivo.
+------------------------------------------------------------------------------
+const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+const url = URL.createObjectURL(blob);
+
+const a = document.createElement('a');
+a.href = url;
+a.download = 'asistencia.csv';
+a.click();
+URL.revokeObjectURL(url);
+
+Blob convierte el texto en un archivo en memoria. createObjectURL genera una URL temporal que apunta a ese archivo. Luego crea un link <a> invisible, le asigna esa URL y el nombre del archivo, lo clickea automáticamente para forzar la descarga, y finalmente revokeObjectURL libera la memoria.

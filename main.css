@@ -1,12 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 5px;
+    background-image: url('./instrumentos.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    /* Centrado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+} 
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(175, 164, 11, 0.85);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(235, 232, 232)
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-weight: bold;      /* negrita */
+    font-size: 16px;        /* tamaño del texto */
+    color: #0f0101;            /* color del texto */
+    font-family: Arial;     /* tipografía */
+}
+
+input {
+    border: 1px solid black;
+    padding: 5px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #555;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
 button {
     background-color: white;
     color: black;
     border: 1px solid black;
     padding: 5px 10px;
     cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    width: 100%;
+    margin-top: 5px;
 }
 
-input {
-    border: 1px solid black;
-    padding: 5px;
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+button:active {
+    background-color: #333;
 }

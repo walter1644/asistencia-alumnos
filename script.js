@@ -1,20 +1,12 @@
 const alumnos = [];
 
-function obtenerNumero() {
-    return document.getElementById('numero').value;
-}
-
-function obtenerFecha() {
-    return document.getElementById('fecha').value;
-}
-
-function obtenerValor() {
-    return document.getElementById('valor').value;
+function obtenerCampo(id) {
+    return document.getElementById(id).value;
 }
 
 function camposCompletos() {
-    return obtenerNumero() && obtenerFecha() && obtenerValor() && 
-           document.getElementById('alumno').value;
+    return obtenerCampo('alumno') && obtenerCampo('numero') &&
+    obtenerCampo('fecha') && obtenerCampo('valor');
 }
 
 function registrar() {
@@ -24,10 +16,10 @@ function registrar() {
     }
 
     alumnos.push({
-        nombre: document.getElementById('alumno').value,
-        numero: obtenerNumero(),
-        fecha: obtenerFecha(),
-        valor: obtenerValor()
+        nombre: obtenerCampo('alumno'),
+        numero: obtenerCampo('numero'),
+        fecha: obtenerCampo('fecha'),
+        valor: obtenerCampo('valor')
     });
 
     limpiarCampos();
@@ -42,7 +34,7 @@ function limpiarCampos() {
 
 function descargarCSV() {
     const filas = [
-        ['#', 'Nombre', 'Numero', 'Fecha', 'Valor'],
+        ['N°', 'Nombre', 'Numero', 'Fecha', 'Valor'],
         ...alumnos.map((a, i) => [i + 1, a.nombre, a.numero, a.fecha, a.valor])
     ];
 
